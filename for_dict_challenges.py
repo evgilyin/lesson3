@@ -1,5 +1,5 @@
-# Задание 1
-# Дан список учеников, нужно посчитать количество повторений каждого имени ученика.
+#Задание 1
+#Дан список учеников, нужно посчитать количество повторений каждого имени ученика.
 students = [
   {'first_name': 'Вася'},
   {'first_name': 'Петя'},
@@ -97,8 +97,8 @@ for classes in school_students:
 
 
 
-# Задание 4
-# Для каждого класса нужно вывести количество девочек и мальчиков в нём.
+#Задание 4
+#Для каждого класса нужно вывести количество девочек и мальчиков в нём.
 school = [
   {'class': '2a', 'students': [{'first_name': 'Маша'}, {'first_name': 'Оля'}]},
   {'class': '3c', 'students': [{'first_name': 'Олег'}, {'first_name': 'Миша'}]},
@@ -136,13 +136,14 @@ is_male = {
   'Миша': True,
 }
 
+max_boys_class = []
+max_girls_class = []
+max_boys = 0
+max_girls = 0
+
 for classes in school:
 	girls = 0
 	boys = 0
-	max_boys = 0
-	max_girls = 0
-	max_boys_class = []
-	max_girls_class = []
 	for students in classes['students']:
 		name = students['first_name']
 		if is_male[name] == False:
@@ -150,11 +151,12 @@ for classes in school:
 		elif is_male[name] == True:
 			boys += 1
 
-		if girls >= max_girls:
-			max_girls = girls
-			max_girl_class = [classes['class'],]
-		if boys >= max_boys:
-			max_boys = boys
-			max_boys_class = [classes['class'],]
-	print(f"Больше всего мальчиков в классе {(', '.join(max_boys_class))}")
-	print(f"Больше всего девочек в классе {(', '.join(max_girls_class))}")
+	if girls >= max_girls:
+		max_girls = girls
+		max_girls_class = [classes['class'],]
+	if boys >= max_boys:
+		max_boys = boys
+		max_boys_class = [classes['class'],]
+
+print(f"Больше всего мальчиков в классе {(', '.join(max_boys_class))}")
+print(f"Больше всего девочек в классе {(', '.join(max_girls_class))}")
